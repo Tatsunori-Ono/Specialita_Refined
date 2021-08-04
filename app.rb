@@ -138,3 +138,11 @@ end
 get '/setting' do
     erb :setting
 end
+
+get '/credit' do
+    erb :credit
+end
+
+get '/atlier' do
+    erb :atlier
+end

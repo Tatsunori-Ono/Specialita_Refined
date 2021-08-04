@@ -4,7 +4,7 @@
         <!--Board Size-->
         <style>
             #board {
-                width: 800px;
+                width: 1300px;
                 height: 500px;
                 border: 1px solid black;
             }
@@ -18,7 +18,7 @@
         <!--Drawing Board-->
         <div id="board"></div>
         <div id="button_center">
-            <button id="save_drawing">Save Drawing (Please take a screenshot just in case)</button>
+            <button id="save_drawing">Save Drawing</button>
         </div>
         <script>
             $(document).ready(function(){
@@ -40,7 +40,7 @@
                 $("#save_drawing").click(function(){
                     domtoimage.toBlob(document.getElementById('board'))
                     .then(function (blob) {
-                        window.saveAs(blob, 'muzartt_drawing.png');
+                        window.saveAs(blob, 'specialita_drawing.png');
                     });
                 })
             })
