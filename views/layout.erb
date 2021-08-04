@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        
+        <title>Specialita</title>
+        
+        <!--favicon-->
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <!--Loader-->
+        <link rel="stylesheet" href="/css/loading.css">
+        <script src="https://kit.fontawesome.com/f3cbd04b88.js" crossorigin="anonymous"></script>
+        <!--jQuery for Loader-->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>     
+        
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    </head>
+    <body>
+      
+        <!--Loader-->
+        <div class="loader-wrapper">
+          <div style="width: 100%; height: 100%; <b1>1</b1>order:solid transparent;">
+            <div class="loading loading--full-height"></div>
+          </div>
+        </div>
+        <script>
+          $(window).on("load",function(){
+            $(".loader-wrapper").fadeOut("slow");
+          });
+        </script>
+      
+        <!--navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+              <img src="/images/logos/Specialita-Logo-White.png" width="176.16" height="48" class="d-inline-block align-top" alt="Specialita">
+              <!--<img src="/images/logos/Specialita-Logo-White-Astroid.png" width="344.31" height="48" class="d-inline-block align-top" alt="Specialita presented by Astroid Inc.">-->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Others
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/home">Mission</a></li>
+                    <li><a class="dropdown-item" href="#">About Us</a></li>
+                    <li><a class="dropdown-item" href="#">Credits</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Instagram</a></li>
+                    <li><a class="dropdown-item" href="#">Twitter</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Coming Soon...</a>
+                </li>
+              </ul>
+              <!--If the user is logged in and if the user is not logged in-->
+              <!--list-style: none is for deleting the bullet points-->
+              <% unless session[:user] %>
+                <li style="list-style: none; color: white; font-family: 'Gill Sans', sans-serif; font-size: 18px;">New User? /</li>
+                <li class="active" style="list-style: none; font-size: 18px;"><a href="/signin">Sign In /<span class="sr-only"></span></a></li>
+                <li style="list-style: none; font-size: 18px;"><a href="/signup"> Sign Up</a></li>
+              <% else %>
+                <li style="list-style: none; color: white; font-family: 'Gill Sans', sans-serif; font-size: 18px;">Hello, <%= current_user.username_first %>! /</li>
+                <li style="list-style: none; font-size: 18px;"><a href="/signout">Log Out</a></li>
+              <% end %>
+            </div>
+          </div>
+        </nav>
+      
+      <!--Need this to have collapsed menu and "others" to work-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      
+      <!--Sinatra Flash for pop-up messages-->
+      <% flash.keys.each do |type| %>
+        <div data-alert class="flash <%= type %> alert-box radius">
+          <%= flash[type] %>
+          <a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+      
+      <!--Contents respect to each erb-->
+      <%= yield %>
+
+    </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i">
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <!--jQuery-->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>        
+        <!--JavaScript-->
+        <script type="text/javascript" src="/js/time_now.js"></script>
+        <!--CSS-->
+        <link rel="stylesheet" href="/css/timer.css">
+        <link rel="stylesheet" href="/css/stage.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/mission.css">
+        <link rel="stylesheet" href="/css/subject_select.css">
+        <link rel="stylesheet" href="/css/subject_add.css">
+        <link rel="stylesheet" href="/css/settingbar.css">
+        <!--Music Player CSS-->
+        <link rel="stylesheet" href="/css/music_player.css">
+    </head>
+    <body>
+        <!--Realtime Date and Time-->
+        <div style="text-align: center;">
+          <p style="display:inline; font-family: cursive; font-size: 20px" id="RealDate"></p>
+          <p style="display:inline; font-family: cursive; font-size: 20px" id="RealtimeClock"></p>
+        </div>
+        <!--Sidebar-->
+        <div class="sidebar">
+          <ul class="side">
+            <li><a class="active" href="#home"><span class="fas fa-house-user"></span>Home</a></li>
+            <li><a href="#news"><span class="far fa-newspaper"></span>News</a></li>
+            <li><a href="#contact"><span class="far fa-address-book"></span>Contact</a></li>
+            <li><a href="/overall_records"><span class="far fa-list-alt"></span>Records</a></li>
+          </ul>
+        </div>
+        <!--Settingbar-->
+        <div class="settingbar">
+          <ul class="setting">
+            <li><a href="#home"><span class="fas fa-fire-alt"></span>Day Streak</a></li>
+            <li><a href="#news"><span class="fas fa-check-square"></span>Mission</a></li>
+            <li><a href="#contact"><span class="fas fa-industry"></span>Atelier</a></li>
+            <li class="bottom"><a href="/setting"><span class="fas fa-cogs"></span>Setting</a></li>
+          </ul>
+        </div>
+        <!--//Stage-->
+        <div class="img_border">
+          <img src="/images/stages/bg_uchu_space.jpeg" alt="Stage">
+        </div>
+        <!--Subject-->
+        <div class="subject-container">
+          <!--Subject Selection-->
+          <div class="selectbox color">
+            <select name="subject" id="selectSubject">
+              <option value="" disabled selected>Select Subject</option>
+              <% @records.each do |record| %>
+                <option value="<%= record.subject %>"><%= record.subject %></option>
+              <% end %>
+            </select>
+          </div>
+          <!--Subject Add-->
+          <div class="subject_add_container">
+            <a href="/subject/new" class="subject_add_button" style="color: black; padding: 0; border: dashed 5px #77C2B9;">New Subject</a>
+          </div>
+        </div>
+        <!--Timer-->
+        <div id="timerContainer">
+          <div class="timer" onclick="startTimer()">Start Studying!</div>
+          <div class="startTimer reset" onclick="startTimer()" >
+            <i class="fas fa-play"></i>
+          </div>
+          <div class="pauseTimer reset" onclick="pauseTimer()" >
+            <i class="fas fa-pause"></i>
+          </div>
+          <div class="resetTimer reset" onclick="resetTimer()">+</div>
+        </div>
+        <!--Total Time-->
+        <div id="total_timerContainer">
+          <div class="total_timer_design">
+            <div class="total_timer">Total Time</div>
+          </div>
+        </div>
+        <!--Music Player-->
+        <div class="music_player_body">
+            <div class="music-container" id="music-container">
+              <div class="music-info">
+                <h4 id="title"></h4>
+                <div class="progress-container" id="progress-container">
+                  <div class="progress" id="progress"></div>
+                </div>
+              </div>
+        
+              <audio src="/music/The_Fat_Rat.mp3" id="audio"></audio>
+              <audio src="/music/phony.mp3" id="audio"></audio>
+        
+              <div class="img-container">
+                <img src="/images/The_Fat_Rat.jpg", "/images/phony.jpg" alt="music-cover" id="cover"/>
+              </div>
+              <div class="navigation">
+                <button id="prev" class="action-btn">
+                  <i class="fas fa-backward"></i>
+                </button>
+                <button id="play" class="action-btn action-btn-big">
+                  <i class="fas fa-play"></i>
+                </button>
+                <button id="next" class="action-btn">
+                  <i class="fas fa-forward"></i>
+                </button>
+              </div>
+            </div>
+        </div>
+        <!--Music Player JS-->
+        <script type="text/javascript" src="/js/music_player.js"></script>
+        <!--Time JS-->
+        <script type="text/javascript" src="/js/stopwatch.js"></script>
+    </body>
+</html>

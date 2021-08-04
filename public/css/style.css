@@ -1,0 +1,23 @@
+a {
+     font-family: "Gill Sans", sans-serif;
+     color: white;
+     text-decoration: none !important;
+     outline: none !important;
+     -webkit-transition: all .3s ease-in-out;
+     -moz-transition: all .3s ease-in-out;
+     -ms-transition: all .3s ease-in-out;
+     -o-transition: all .3s ease-in-out;
+     transition: all .3s ease-in-out;
+}
+
+span {
+     margin-right: 10px;
+}
+
+.subject-container {
+     margin-top: 10px;
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}

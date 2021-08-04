@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Board Size-->
+        <style>
+            #board {
+                width: 800px;
+                height: 500px;
+                border: 1px solid black;
+            }
+        </style>
+        <!--Drawing Board CSS/AJAX-->
+        <link rel="stylesheet" type="text/css" href="/css/drawingboard.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    </head>
+    <body>
+        <!--Drawing Board-->
+        <div id="board"></div>
+        <div id="button_center">
+            <button id="save_drawing">Save Drawing (Please take a screenshot just in case)</button>
+        </div>
+        <script>
+            $(document).ready(function(){
+                var imageBoard = new DrawingBoard.Board('board', {
+                    background: "#fff",
+                    color: '#000',
+                    size: 30,
+                    controls: [
+                        'Color',
+                        { Size: { type: "range"} },
+                        { Navigation: { back: true, forward: true} },
+                        'DrawingMode'
+                    ],
+                    // enables to save by session of the user (not local)
+                    webStorage: 'session',
+                    // enables to expand canvas by changing the board size at the top
+                    enlargeYourContainer: true
+                });
+                $("#save_drawing").click(function(){
+                    domtoimage.toBlob(document.getElementById('board'))
+                    .then(function (blob) {
+                        window.saveAs(blob, 'muzartt_drawing.png');
+                    });
+                })
+            })
+        </script>
+        <!--Drawing Board JS-->
+        <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/drawingboard.js/0.4.6/drawingboard.min.js"></script>
+    </body>
+</html>

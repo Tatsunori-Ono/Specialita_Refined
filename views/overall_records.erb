@@ -1,0 +1,15 @@
+<h1>Your Record</h1>
+
+<% if current_user.records.present? %>
+	<ul class="list-group">
+		<% @records.each do |record| %>
+			<li class="list-group-item">
+				<%= record.subject %> |
+				<strong><%= (record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)).floor %></strong> h: 
+				<strong><%= (record.total_time % (1000 * 60 * 60) / (1000 * 60)).floor %></strong> m: 
+				<strong><%= (record.total_time % (1000 * 60) / 1000).floor %></strong> s: 
+				<strong><%= (record.total_time % (1000 * 60) / 100).floor %></strong> ms
+			</li>
+		<% end %>
+	</ul>
+<% end %>

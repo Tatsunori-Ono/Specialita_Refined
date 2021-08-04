@@ -1,0 +1,48 @@
+html, body {
+    margin: 0px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #242f3f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+}
+
+/*Load Mark to Centre*/
+.loading--full-height {
+    align-items: center;
+    height: 100%;
+}
+
+/*Load Mark Format*/
+.loading::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 10px solid #dddddd;
+    border-top-color: #EE4132;
+    border-radius: 50%;
+    animation: loading 0.5s ease infinite;
+}
+
+/*Rotating Animation*/
+@keyframes loading {
+    to {
+        transform: rotate(1turn);
+    }
+}
+      
