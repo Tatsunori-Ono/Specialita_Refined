@@ -1,0 +1,24 @@
+<!--CSS-->
+<link rel="stylesheet" href="/css/subject_select.css">
+<!--jQuery-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!--Background-->
+Background Settings <br>
+    <!--Background Selection-->
+        <div class="selectbox color">
+            <select name="background" id="selectBackground">
+              <option value="" disabled selected>Select Background</option>
+              <% @backgrounds.each do |background| %>
+                <option value="<%= background.bg_name %>"><%= background.bg_name %></option>
+              <% end %>
+            </select>
+        </div>
+    <!--Background Add-->
+        <a href="/add_bg" class="subject_add_button" style="color: black; padding: 0; border: dashed 5px #77C2B9;">New Background</a>
+    <!--Background Preview-->
+        <div class="background_preview">Background Preview</div>
+        <!--Pathの書き方で出るか出ないか違う-->
+            <!--<img src="/images/user_bg_images/d16f3911-4229-47bd-b952-29ecc3c221e8.jpeg">-->
+            <!--<img src="./public/images/user_bg_images/d16f3911-4229-47bd-b952-29ecc3c221e8.jpeg">-->
+<!--JavaScript-->
+<script type="text/javascript" src="/js/background.js"></script>

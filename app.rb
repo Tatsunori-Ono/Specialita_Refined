@@ -135,14 +135,44 @@ get '/overall_records' do
     erb :overall_records
 end
 
-get '/setting' do
-    erb :setting
-end
-
 get '/credit' do
     erb :credit
 end
 
 get '/atlier' do
     erb :atlier
+end
+
+get '/setting' do
+    if current_user.nil?
+        @backgrounds = Background.none
+    else
+        @backgrounds = current_user.backgrounds
+    end
+    erb :setting
+end
+
+post '/background' do
+    @background = Background.find_by(bg_name: params[:bg_name])
+    return @background.to_json
+end
+
+get '/add_bg' do
+    erb :add_bg
+end
+
+post '/add_bg' do
+    file = params[:bg_image]
+    ext_name = File.extname(file[:filename])
+    if [".jpeg", ".jpg", ".png"].include?(ext_name)
+        save_path = "./public/images/user_bg_images/#{SecureRandom.uuid+ext_name}"
+        File.open(save_path, 'wb') do |f|
+            f.write(file[:tempfile].read)
+        end
+        current_user.backgrounds.create(bg_name: params[:bg_name], bg_image: save_path)
+    else
+        500
+    end
+    
+    redirect '/setting'
 end

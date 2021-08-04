@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     length: {in: 5..20}
   has_many :records
   has_many :missions
+  has_many :backgrounds
 end
 
 class Record < ActiveRecord::Base
@@ -18,5 +19,9 @@ class Record < ActiveRecord::Base
 end
 
 class Mission < ActiveRecord::Base
+  belongs_to :user
+end
+
+class Background < ActiveRecord::Base
   belongs_to :user
 end
