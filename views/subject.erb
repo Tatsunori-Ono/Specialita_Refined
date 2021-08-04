@@ -1,4 +1,11 @@
-<form action="/subject_add" method="post">
-    <input type="text" name="subject" placeholder="type in new subject"><br>
-    <input type="submit" value="add subject">
+<!--enctype="multipart/form-data" needed to upload image-->
+<form action="/subject_add" method="post" enctype="multipart/form-data">
+    
+    <label for="subject">Subject Name (Required)</label><br>
+    <input type="text" name="subject" placeholder="type in new subject" required><br>
+    
+    <label for="sp_image">Specialita Design for Subject (Required)</label><br>
+    <input type="file" name="sp_image" required><br>
+    
+    <input type="submit" value="add subject & its specialita">
 </form>

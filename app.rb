@@ -7,6 +7,9 @@ require './models'
 # JSON
 require 'json'
 
+# Image Uploading
+require 'securerandom'
+
 enable :sessions
 
 before do
@@ -100,7 +103,26 @@ get '/subject/new' do
 end
 
 post '/subject_add' do
-    current_user.records.create(subject: params[:subject])
+    # current_user.records.create(subject: params[:subject], image: params[:filename])
+    
+    # @sp_image = params[:filename]
+    # File.open("/images/user_images/#{@sp_image}", 'wb') do |f|
+    #   f.write(file.read)
+    # end
+    
+    file = params[:sp_image]
+    ext_name = File.extname(file[:filename])
+    if [".jpeg", ".jpg", ".png"].include?(ext_name)
+        save_path = "./public/images/user_images/#{SecureRandom.uuid+ext_name}"
+        File.open(save_path, 'wb') do |f|
+            f.write(file[:tempfile].read)
+        end
+        # subjectとimage_pathを１行に保存
+        current_user.records.create(subject: params[:subject], image: save_path)
+    else
+        500
+    end
+    
     redirect '/home'
 end
 
