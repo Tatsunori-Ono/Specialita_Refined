@@ -6,8 +6,22 @@ var bg_path;
 function ShowBackground() {
     var correct_bg_path;
     // 最初の./public/の部分は邪魔だから前頭だけを空白に置き換える
-    correct_bg_path = bg_path.replace('./public/', '')
+    correct_bg_path = bg_path.replace('./public/', '');
     document.querySelector('.background_preview').innerHTML = "<img src="+correct_bg_path+">";
+}
+
+function saveBackground() {
+  let selector = document.querySelector('#selectBackground');
+  
+  $.ajax("/save_bg",{
+    type:"POST",
+    dataType:"json",
+    data: {
+        "bg_name": selector.value
+    }
+  }).done(function(response){
+
+  });
 }
 
 //Selector function that activates whenever the value changes

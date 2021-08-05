@@ -157,6 +157,33 @@ post '/background' do
     return @background.to_json
 end
 
+post '/save_bg' do
+    @background_row = current_user.backgrounds.find_by(bg_name: params[:bg_name])
+    
+    puts @background_row.bg_image
+    
+    # if @background_row
+    #     p 'あるよ'
+    # end
+    
+    # if @background_row.bg_image
+    #   p 'bg_imageあるよ' 
+    # end
+    
+    # @temp_bg = current_user.user_bg_images
+    # @temp_bg.bg_image = @background_row
+    
+    User_bg_image.create(user: current_user, bg_name_id: @background_row)
+    
+    # puts @temp_bg
+    
+    # @temp_bg.save
+    
+    # current_user.update(chosen_bg: @background_row.bg_image)
+    
+    flash[:notice] = "Background Saved!"
+end
+
 get '/add_bg' do
     erb :add_bg
 end
