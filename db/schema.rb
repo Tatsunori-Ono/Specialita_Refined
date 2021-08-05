@@ -12,20 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2021_08_05_113828) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "backgrounds", force: :cascade do |t|
     t.string "bg_name"
     t.string "bg_image"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_backgrounds_on_user_id"
   end
 
   create_table "missions", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.string "content"
     t.boolean "completed"
     t.datetime "created_at", precision: 6, null: false
@@ -36,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_113828) do
   create_table "records", force: :cascade do |t|
     t.string "subject"
     t.float "total_time"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
@@ -44,11 +41,11 @@ ActiveRecord::Schema.define(version: 2021_08_05_113828) do
   end
 
   create_table "user_bg_images", force: :cascade do |t|
-    t.bigint "bg_name_id"
-    t.bigint "user_id"
+    t.integer "background_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bg_name_id"], name: "index_user_bg_images_on_bg_name_id"
+    t.index ["background_id"], name: "index_user_bg_images_on_background_id"
     t.index ["user_id"], name: "index_user_bg_images_on_user_id"
   end
 
