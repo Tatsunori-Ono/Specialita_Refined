@@ -126,7 +126,7 @@ post '/subject_add' do
     redirect '/home'
 end
 
-get '/' do
+get '/add_specialita' do
     erb :add_specialita
 end
 
