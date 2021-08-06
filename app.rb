@@ -173,7 +173,7 @@ post '/save_bg' do
     # @temp_bg = current_user.user_bg_images
     # @temp_bg.bg_image = @background_row
     
-    User_bg_image.create(user: current_user, bg_name_id: @background_row)
+    User_bg_image.create(user: current_user, background_id: @background_row)
     
     # puts @temp_bg
     

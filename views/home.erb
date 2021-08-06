@@ -44,9 +44,13 @@
           </ul>
         </div>
         <!--//Stage-->
-        <div class="img_border">
-          <!--<img src="/images/stages/bg_uchu_space.jpeg">-->
-          <div class="background_preview"></div>
+        <div id="sp-stage-wrap">
+          <!--<div id="canvas-txt"><p>CONTENTS</p></div>-->
+          <div class="img_border">
+            <canvas id="canvas-container"></canvas>
+            <!--<img src="/images/stages/bg_uchu_space.jpeg">-->
+            <!--<img src= User_bg_image.find_by(user: current_user).order(id: "DESC") >-->
+          </div>
         </div>
         <!--Subject-->
         <div class="subject-container">
@@ -110,6 +114,8 @@
               </div>
             </div>
         </div>
+        <!--Stage for Specialita JS-->
+        <script type="text/javascript" src="/js/sp_stage.js"></script>
         <!--Music Player JS-->
         <script type="text/javascript" src="/js/music_player.js"></script>
         <!--Time JS-->

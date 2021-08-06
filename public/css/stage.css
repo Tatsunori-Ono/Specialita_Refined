@@ -10,9 +10,26 @@
     border-color: black;
     width: 1000px;
     height: 500px;
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 50px / 15px;
     overflow: hidden;
     box-shadow: 0 10px 17.5px rgba(0, 0, 0, 0.3);
 }
+
+#sp-stage-wrap {
+    width: 1000px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*#canvas-txt {*/
+/*    font-size: 60px;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
