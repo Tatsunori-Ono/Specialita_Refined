@@ -50,7 +50,9 @@
             <canvas id="canvas-container"></canvas>
             <!--<img src="/images/stages/bg_uchu_space.jpeg">-->
             <!--<img src= User_bg_image.find_by(user: current_user).order(id: "DESC") >-->
-            <img src="<%= current_user.user_bg_images.order(id: "DESC").first.background.bg_image %>">
+            <% if images = current_user.user_bg_images %>
+              <img src="<%= images.order(id: "DESC").first.background.bg_image %>">
+            <% end %>
           </div>
         </div>
         <!--Subject-->

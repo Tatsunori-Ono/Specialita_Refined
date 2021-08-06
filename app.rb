@@ -113,12 +113,14 @@ post '/subject_add' do
     file = params[:sp_image]
     ext_name = File.extname(file[:filename])
     if [".jpeg", ".jpg", ".png"].include?(ext_name.downcase)
-        save_path = "./public/images/user_images/#{SecureRandom.uuid+ext_name}"
+        file_name = SecureRandom.uuid+ext_name
+        path_to_save_to_db = "images/user_images/#{file_name}"
+        save_path = "./public/images/user_images/#{file_name}"
         File.open(save_path, 'wb') do |f|
             f.write(file[:tempfile].read)
         end
         # subjectとimage_pathを１行に保存
-        current_user.records.create(subject: params[:subject], image: save_path)
+        current_user.records.create(subject: params[:subject], image: path_to_save_to_db)
     else
         500
     end
@@ -191,11 +193,13 @@ post '/add_bg' do
     file = params[:bg_image]
     ext_name = File.extname(file[:filename])
     if [".jpeg", ".jpg", ".png"].include?(ext_name.downcase)
-        save_path = "./public/images/user_bg_images/#{SecureRandom.uuid+ext_name}"
+        file_name = SecureRandom.uuid+ext_name
+        path_to_save_to_db = "images/user_images/#{file_name}"
+        save_path = "./public/images/user_images/#{file_name}"
         File.open(save_path, 'wb') do |f|
             f.write(file[:tempfile].read)
         end
-        current_user.backgrounds.create(bg_name: params[:bg_name], bg_image: save_path)
+        current_user.backgrounds.create(bg_name: params[:bg_name], bg_image: path_to_save_to_db)
     else
         500
     end
