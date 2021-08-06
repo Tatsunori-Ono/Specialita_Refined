@@ -26,8 +26,10 @@ end
 
 class Background < ActiveRecord::Base
   belongs_to :user
+  has_many :user_bg_images
 end
 
-class User_bg_image < ActiveRecord::Base
+class UserBgImage < ActiveRecord::Base
   belongs_to :user
+  belongs_to :background
 end

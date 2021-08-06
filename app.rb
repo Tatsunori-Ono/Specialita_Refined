@@ -112,7 +112,7 @@ post '/subject_add' do
     
     file = params[:sp_image]
     ext_name = File.extname(file[:filename])
-    if [".jpeg", ".jpg", ".png"].include?(ext_name)
+    if [".jpeg", ".jpg", ".png"].include?(ext_name.downcase)
         save_path = "./public/images/user_images/#{SecureRandom.uuid+ext_name}"
         File.open(save_path, 'wb') do |f|
             f.write(file[:tempfile].read)
@@ -126,7 +126,7 @@ post '/subject_add' do
     redirect '/home'
 end
 
-get '/add_specialita' do
+get '/' do
     erb :add_specialita
 end
 
@@ -160,8 +160,6 @@ end
 post '/save_bg' do
     @background_row = current_user.backgrounds.find_by(bg_name: params[:bg_name])
     
-    puts @background_row.bg_image
-    
     # if @background_row
     #     p 'あるよ'
     # end
@@ -173,7 +171,8 @@ post '/save_bg' do
     # @temp_bg = current_user.user_bg_images
     # @temp_bg.bg_image = @background_row
     
-    User_bg_image.create(user: current_user, background_id: @background_row)
+    # current_user.user_bg_images.create(user: current_user, background: @background_row)
+    current_user.user_bg_images.create(user: current_user, background: @background_row)
     
     # puts @temp_bg
     
@@ -191,7 +190,7 @@ end
 post '/add_bg' do
     file = params[:bg_image]
     ext_name = File.extname(file[:filename])
-    if [".jpeg", ".jpg", ".png"].include?(ext_name)
+    if [".jpeg", ".jpg", ".png"].include?(ext_name.downcase)
         save_path = "./public/images/user_bg_images/#{SecureRandom.uuid+ext_name}"
         File.open(save_path, 'wb') do |f|
             f.write(file[:tempfile].read)
