@@ -22,7 +22,7 @@ before do
         # if !User && request.path_info == "/home"
     #below works as well!
          #if !current_user && request.path_info != "/" && request.path_info != "/signin" && request.path_info != "/signup"
-    if !current_user && !["/", "/signin", "/signup"].include?(request.path_info)  
+    if !current_user && !["/", "/signin", "/signup", "/credit"].include?(request.path_info)  
         # Using Sinatra Flash to show pop-up message for Users
         flash[:notice] = "Please sign up or sign in before accessing!"
         redirect '/'
