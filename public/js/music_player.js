@@ -12,10 +12,10 @@ const cover = document.getElementById('cover');
 // const durTime = document.querySelector('#durTime');
 
 // Song titles
-const songs = ['The_Fat_Rat', 'phony'];
+const songs = ['Specialita_Original_Track', 'The_Fat_Rat', 'phony'];
 
 // Keep track of song
-let songIndex = 1;
+let songIndex = 0;
 
 // Initially load song details into DOM
 loadSong(songs[songIndex]);

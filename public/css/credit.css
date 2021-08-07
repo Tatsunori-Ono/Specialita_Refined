@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+    font-family: "Gill Sans", sans-serif;
+}
+
+h2 {
+    font-style: italic;
+    font-weight: bold;
+    color: #ef4133;
+}
+
+.logo img {
+    background: black;
+    width: 100%;
+}
