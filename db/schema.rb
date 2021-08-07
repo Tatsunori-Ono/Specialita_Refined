@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_05_113828) do
+ActiveRecord::Schema.define(version: 2021_08_07_145713) do
 
   create_table "backgrounds", force: :cascade do |t|
     t.string "bg_name"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2021_08_05_113828) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["background_id"], name: "index_user_bg_images_on_background_id"
     t.index ["user_id"], name: "index_user_bg_images_on_user_id"
+  end
+
+  create_table "user_sp_images", force: :cascade do |t|
+    t.integer "record_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_id"], name: "index_user_sp_images_on_record_id"
+    t.index ["user_id"], name: "index_user_sp_images_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

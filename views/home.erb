@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="/css/subject_select.css">
         <link rel="stylesheet" href="/css/subject_add.css">
         <link rel="stylesheet" href="/css/settingbar.css">
+        <link rel="stylesheet" href="/css/sp_movement.css">
         <!--Music Player CSS-->
         <link rel="stylesheet" href="/css/music_player.css">
     </head>
@@ -43,16 +44,30 @@
             <li class="bottom"><a href="/setting"><span class="fas fa-cogs"></span>Setting</a></li>
           </ul>
         </div>
+        <!--Specialita表示-->
+        <div id="sp-wrap">
+          <% if current_user.records.present? %>
+            <div class='a'>
+              <!--<div class="update_sp_image"></div>-->
+              <img src="<%= current_user.user_sp_images.order(id: "DESC").first.record.image %>">
+              <!--<img src="/images/default/Specialita_Def_1_mini.png">-->
+            </div>
+          <% end %>
+        </div>
         <!--//Stage-->
         <div id="sp-stage-wrap">
-          <!--<div id="canvas-txt"><p>CONTENTS</p></div>-->
           <div class="img_border">
-            <% if current_user.user_bg_images.present? %>
-              <img src="<%= current_user.user_bg_images.order(id: "DESC").first.background.bg_image %>">
-            <% end %>
-            <canvas id="canvas-container"></canvas>
+            <!--Specialita表示-->
+
+            <!--背景表示-->
+            <div class="stage_format">
+              <% if current_user.user_bg_images.present? %>
+                <img src="<%= current_user.user_bg_images.order(id: "DESC").first.background.bg_image %>">
+              <% end %>
+            </div>
+            <!--<div id="canvas-txt"><p>CONTENTS</p></div>-->
+            <!--<canvas id="canvas-container"></canvas>-->
             <!--<img src="/images/stages/bg_uchu_space.jpeg">-->
-            <!--<img src= User_bg_image.find_by(user: current_user).order(id: "DESC") >-->
           </div>
         </div>
         <!--Subject-->
@@ -124,5 +139,7 @@
         <!--Time JS-->
         <script type="text/javascript" src="/js/stopwatch.js"></script>
         <script type="text/javascript" src="/js/background.js"></script>
+        <!--SP Movement JS-->
+        <script type="text/javascript" src="/js/sp_movement.js"></script>
     </body>
 </html>

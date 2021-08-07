@@ -72,7 +72,12 @@ post '/home' do
 end
 
 post '/total_time' do
-    @total_time = Record.find_by(subject: params[:subject])
+    # 選ばれてるSP画像を中間テーブルに
+    @sp_image_row = current_user.records.find_by(subject: params[:subject])
+    current_user.user_sp_images.create(user: current_user, record: @sp_image_row)
+    
+    # Total_timeの送信
+    @total_time = current_user.records.find_by(subject: params[:subject])
     # instance variable (Hashデータ型)をJSONの形式で返す
     return @total_time.to_json
 end

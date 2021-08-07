@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :missions
   has_many :backgrounds
   has_many :user_bg_images
+  has_many :user_sp_images
 end
 
 class Record < ActiveRecord::Base
@@ -32,4 +33,9 @@ end
 class UserBgImage < ActiveRecord::Base
   belongs_to :user
   belongs_to :background
+end
+
+class UserSpImage < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :record
 end

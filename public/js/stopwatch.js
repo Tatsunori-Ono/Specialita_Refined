@@ -23,6 +23,7 @@ selector_chosen.addEventListener('change', (event) => {
   let selector = document.querySelector('#selectSubject');
   
   //Ajax to send selected subject and get total_time of that subject from the database
+  //Also, I am adding here system of sending sp_image path
   $.ajax("/total_time",{
     type:"POST",
     dataType:"json",
@@ -35,6 +36,7 @@ selector_chosen.addEventListener('change', (event) => {
     // console.log(response['total_time'])
     total_time = response['total_time'];
     ShowTotalTime();
+    // UpdateSpImage();
   });
   
 });
@@ -143,4 +145,10 @@ function ShowTotalTime() {
   // }).fail(function (jqXHR, textStatus, errorThrown) {
   //   alert('error');
   });
+}
+
+function UpdateSpImage() {
+  //SelectorでSubjectを変えた際にsp_image更新される！
+  document.querySelector('.update_sp_image').innerHTML = "<img src= \"<%= current_user.user_sp_images.order(id: \"DESC\").first.record.image %>\">";
+  // console.log("<img src= \"<%= current_user.user_sp_images.order(id: \"DESC\").first.record.image %>\">");
 }
