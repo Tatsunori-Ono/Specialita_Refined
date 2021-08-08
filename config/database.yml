@@ -1,13 +1,10 @@
-default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
-
-development:
-  adapter: sqlite3
-  database: db/development.db
-
-production:
+default_env: &default
   adapter: postgresql
   encoding: unicode
   database: s_express
+
+development:
+  <<: *default
+
+production:
+  <<: *default
