@@ -8,8 +8,6 @@ development:
   database: db/development.db
 
 production:
-  <<: *default
   adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
   encoding: unicode
-  pool: 5
+  database: s_express
