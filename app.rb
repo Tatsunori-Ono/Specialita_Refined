@@ -138,7 +138,7 @@ get '/add_specialita' do
 end
 
 get '/overall_records' do
-    @records = Record.all
+    @records = current_user.records.all
     erb :overall_records
 end
 
