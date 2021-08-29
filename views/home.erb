@@ -46,7 +46,7 @@
         </div>
         <!--Specialita表示-->
         <div id="sp-wrap">
-          <% if current_user.records.present? %>
+          <% if current_user.user_sp_images.present? %>
             <div class='a'>
               <!--<div class="update_sp_image"></div>-->
               <img src="<%= current_user.user_sp_images.order(id: "DESC").first.record.image %>">
