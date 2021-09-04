@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0px;
     position: absolute;
     height: 100%;
@@ -23,12 +24,14 @@ html, body {
 }
 
 /*Load Mark to Centre*/
+
 .loading--full-height {
     align-items: center;
     height: 100%;
 }
 
 /*Load Mark Format*/
+
 .loading::after {
     content: "";
     width: 50px;
@@ -40,9 +43,41 @@ html, body {
 }
 
 /*Rotating Animation*/
+
 @keyframes loading {
     to {
         transform: rotate(1turn);
     }
 }
-      
+
+.image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75px;
+    height: 139.5px;
+    margin: -60px 0 0 -60px;
+    -webkit-animation: spin 0.5s linear infinite;
+    -moz-animation: spin 0.5s linear infinite;
+    animation: spin 0.5s linear infinite;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform-origin: 37.5px 33.255px;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
