@@ -2,10 +2,26 @@
 <form action="/subject_add" method="post" enctype="multipart/form-data">
     
     <label for="subject">Subject Name (Required)</label><br>
-    <input type="text" name="subject" placeholder="type in new subject" required><br>
+    <input type="text" name="subject" placeholder="type in new subject" data-hint="ここに科目名・スペシャリタ名を入力してください" data-hintPosition="middle-right" required><br>
     
     <label for="sp_image">Specialita Design for Subject (Required)</label><br>
-    <input type="file" name="sp_image" required><br>
+    <input type="file" name="sp_image" data-hint="ここにスペシャリタの画像をアップロードしてください" data-hintPosition="middle-right" required><br>
     
     <input type="submit" value="add subject & its specialita">
 </form>
+
+<!-- intro.js, introjs.cssを読み込み-->
+<script src="https://unpkg.com/intro.js@4.2.2/minified/intro.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/intro.js@4.2.2/minified/introjs.min.css">
+
+<!-- introJs()のHint -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    introJs().addHints().setOption("hintButtonLabel", "了解！");
+});
+</script>
+
+<!--Tutorial across multiple page-->
+<!--//     if (RegExp('multipage', 'gi').test(window.location.search)) {-->
+<!--//         introJs().start();-->
+<!--//     }-->

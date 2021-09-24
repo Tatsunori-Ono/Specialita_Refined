@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
         <!--jQuery-->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <!--jquery.cookie.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
         <!--JavaScript-->
         <script type="text/javascript" src="/js/time_now.js"></script>
         <!--CSS-->
@@ -38,21 +40,33 @@
         <!--Settingbar-->
         <div class="settingbar">
           <ul class="setting">
-            <li><a href="#home"><span class="fas fa-fire-alt"></span>Day Streak</a></li>
+            <li><a href="#day-streak"><span class="fas fa-fire-alt"></span>Day Streak</a></li>
             <li><a href="#news"><span class="fas fa-check-square"></span>Mission</a></li>
             <li><a href="/atlier"><span class="fas fa-industry"></span>Atelier</a></li>
+            <li class="begin-tutorial"><a href="#tutorial"><span class="fas fa-chalkboard-teacher"></span>Tutorial<br>(説明はココ！)</a></li>
             <li class="bottom"><a href="/setting"><span class="fas fa-cogs"></span>Setting</a></li>
+            <div data-step='6' data-intro=
+            "<b>背景の設定</b>はここから！背景名と背景の画像をアップロードした後、セレクタで背景を選択して「Save Background」で背景を保存しましょう。
+            <br><i> Set your background from here! Once you set the background name and upload the background image, select the background in the selector and then save the background.</i>
+            "></div>
           </ul>
         </div>
         <!--Specialita表示-->
-        <div id="sp-wrap">
-          <% if current_user.user_sp_images.present? %>
-            <div class='a'>
-              <!--<div class="update_sp_image"></div>-->
-              <img src="<%= current_user.user_sp_images.order(id: "DESC").first.record.image %>">
-              <!--<img src="/images/default/Specialita_Def_1_mini.png">-->
-            </div>
-          <% end %>
+        <div data-step='7' data-intro=
+        "基本機能は以上。他にも色々な機能があるので、ぜひ試してみたください！✨
+        <br> 以上Specialitaでした。
+        <br> <i> These are the basic functionalities. There are many other functions, thus please try them as well! </i>✨
+        <br> This was <b> Specialita</b>.
+        ">
+          <div id="sp-wrap">
+            <% if current_user.user_sp_images.present? %>
+              <div class='a'>
+                <!--<div class="update_sp_image"></div>-->
+                <img src="<%= current_user.user_sp_images.order(id: "DESC").first.record.image %>">
+                <!--<img src="/images/default/Specialita_Def_1_mini.png">-->
+              </div>
+            <% end %>
+          </div>
         </div>
         <!--//Stage-->
         <div id="sp-stage-wrap">
@@ -61,9 +75,14 @@
 
             <!--背景表示-->
             <div class="stage_format">
-              <% if current_user.user_bg_images.present? %>
-                <img src="<%= current_user.user_bg_images.order(id: "DESC").first.background.bg_image %>">
-              <% end %>
+              <div data-step='2' data-intro=
+              '<img src="/images/default/Specialita-Standard.png" width="100.125" height="187">
+              これが<b>Specialita</b>。<br> このゲームの主役にして、これから君と一緒に成長する相棒。
+              <br><i>This is Specialita, the main character of this game and your best buddy.</i>'>
+                <% if current_user.user_bg_images.present? %>
+                  <img src="<%= current_user.user_bg_images.order(id: "DESC").first.background.bg_image %>">
+                <% end %>
+              </div>
             </div>
             <!--<div id="canvas-txt"><p>CONTENTS</p></div>-->
             <!--<canvas id="canvas-container"></canvas>-->
@@ -73,34 +92,57 @@
         <!--Subject-->
         <div class="subject-container">
           <!--Subject Selection-->
-          <div class="selectbox color">
-            <select name="subject" id="selectSubject">
-              <option value="" disabled selected>Select Subject</option>
-              <% @records.each do |record| %>
-                <option value="<%= record.subject %>"><%= record.subject %></option>
-              <% end %>
-            </select>
-          </div>
+            <div class="selectbox color">
+              <div data-step='4' data-intro=
+              "追加ができたら、ここで<b>科目を選択</b>。必ず科目をここで選んでから時間を記録するようにしましょう。前に選択後、ページをリロードすると選択された科目のキャラが画面に表示されるよ！
+              <br><i>After registration of your Specialita, you can choose your added subject from this selector. Please make sure that you choose your subject first to record your time. If you reload the page after selecting, you will be able to see your Specialita on the screen</i> 👍
+              ">
+                <select name="subject" id="selectSubject">
+                  <option value="" disabled selected>Select Subject</option>
+                  <% @records.each do |record| %>
+                    <option value="<%= record.subject %>"><%= record.subject %></option>
+                  <% end %>
+                </select>
+              </div>
+            </div>
           <!--Subject Add-->
-          <div class="subject_add_container">
-            <a href="/subject/new" class="subject_add_button" style="color: black; padding: 0; border: dashed 5px #77C2B9;">New Subject</a>
+          <div data-step='3' data-intro=
+          "まず、自分が勉強時間を記録したい科目を追加しよう！
+          <br> <i> First of all, let's add the subject you want to study! </i>
+          <br> ------------- <br>
+          その科目に関連付けたいキャラ(Specialita)の画像も一緒に登録しましょう✨
+          <br><i> Make sure to prepare your image of your character (Specialita) representing the subject since you will need to register the subject as well as the subject image simultaneously.</i>
+          <br> ------------- <br>
+          <b>科目＆Specialita登録</b>はこのボタンから<br>↙
+          <br><i> Register your Specialita from this button</i><br>↙">
+            <div class="subject_add_container">
+              <a href="/subject/new" class="subject_add_button" style="color: black; padding: 0; border: dashed 5px #77C2B9;">New Subject</a>
+            </div>
           </div>
         </div>
-        <!--Timer-->
-        <div id="timerContainer">
-          <div class="timer" onclick="startTimer()">Start Studying!</div>
-          <div class="startTimer reset" onclick="startTimer()" >
-            <i class="fas fa-play"></i>
-          </div>
-          <div class="pauseTimer reset" onclick="pauseTimer()" >
-            <i class="fas fa-pause"></i>
-          </div>
-          <div class="resetTimer reset" onclick="resetTimer()">+</div>
-        </div>
-        <!--Total Time-->
-        <div id="total_timerContainer">
-          <div class="total_timer_design">
-            <div class="total_timer">Total Time</div>
+        <div data-step='5' data-intro="
+        勉強時間の記録はここの<b>タイマー</b>を使いましょう！
+        <br><i>Studying time can be recorded by using this timer!</i>
+        <br> ▶️️ =タイマー開始/StartTimer
+        <br> ⏸=タイマー一時停止/Stop Timer
+        <br> + =勉強時間追加/Add Studying Time
+        ">
+          <!--Timer-->
+            <div id="timerContainer">
+              <div class="timer" onclick="startTimer()">Start Studying!</div>
+              <div class="startTimer reset" onclick="startTimer()" >
+                <i class="fas fa-play"></i>
+              </div>
+              <div class="pauseTimer reset" onclick="pauseTimer()" >
+                <i class="fas fa-pause"></i>
+              </div>
+              <div class="resetTimer reset" onclick="resetTimer()">+</div>
+            </div>
+          <!--Total Time-->
+          <div id="total_timerContainer">
+            <div class="total_timer_design">
+              <div class="total_timer">Total Time</div>
+            </div>
           </div>
         </div>
         <!--Music Player-->
@@ -142,5 +184,72 @@
         <script type="text/javascript" src="/js/background.js"></script>
         <!--SP Movement JS-->
         <script type="text/javascript" src="/js/sp_movement.js"></script>
+        <!-- intro.js, introjs.cssを読み込み-->
+        <script src="https://unpkg.com/intro.js@4.2.2/minified/intro.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/intro.js@4.2.2/minified/introjs.min.css">
+        <!--Dark Theme for intro.js-->
+        <!--<link href="https://unpkg.com/intro.js@4.2.2/themes/introjs-dark.css" rel="stylesheet">-->
+        
+        <!-- read tutorial setting -->
+        <script type="text/javascript" src="/js/tutorial_setting.js"></script>
+        
+        <!-- introJs().start();を実行する/チュートリアル開始 -->
+        <script>
+          
+          // Tutorialボタンを押すとTutorial開始
+          document.querySelector('.begin-tutorial').addEventListener('click', function(){
+            introJs().setOptions({
+            'nextLabel': "次へ/Next",
+            'prevLabel': "戻る/Back",
+            'doneLabel': 'Specialita!',
+            'showProgress': false,
+            'hidePrev': true,
+            'hideNext': false,
+            'disableInteraction': false,
+            'exitOnEsc': false,
+            'exitOnOverlayClick': false,
+            'keyboardNavigation': true,
+            'showStepNumbers': false
+            }).start()
+          });
+            
+            // Cookieを使って自動的に初回Userを判定、Tutorial開始
+          //   onexit(function() {
+          //     // $.cookieの中の第一引数で書き込むデータのKEY、第二引数でValue
+          //     // expiresでCookieに書き込んだ値の有効期限を設定
+          //     // pathで値が有効となるパスを指定
+          //     $.cookie('SampleFlg', 'on', { expires: 30,path: '/' });
+          //   });
+          // })
+          
+          // jQuery('#tutorial').click(function(){
+          //     introJs().start();
+          // });
+          
+          // document.addEventListener("DOMContentLoaded", function() {
+          //     introJs().start();
+          // });
+          
+          // var introguide = introJs();
+
+          // window.addEventListener('load', function () {
+          //     var doneTour = localStorage.getItem('EventTour') === 'Completed';
+          //     if (doneTour) {
+          //         return;
+          //     }
+          //     else {
+          //         introguide.start()
+          
+          //         introguide.oncomplete(function () {
+          //             localStorage.setItem('EventTour', 'Completed');
+          //         });
+          
+          //         introguide.onexit(function () {
+          //             localStorage.setItem('EventTour', 'Completed');
+          //         });
+          //     }
+          // });
+        </script>
+        
     </body>
 </html>

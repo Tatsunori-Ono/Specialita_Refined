@@ -24,7 +24,7 @@ before do
          #if !current_user && request.path_info != "/" && request.path_info != "/signin" && request.path_info != "/signup"
     if !current_user && !["/", "/signin", "/signup", "/credit"].include?(request.path_info)  
         # Using Sinatra Flash to show pop-up message for Users
-        flash[:notice] = "Please sign up or sign in before accessing!"
+        flash[:notice] = "Please sign up or sign in before accessing!　サインアップ、またはサインインをしてください！"
         redirect '/'
     end
 end

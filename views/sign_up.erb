@@ -5,24 +5,35 @@
     <form action="/signup" method="post">
         
         <label for="username_first">First Name (Required)</label><br>
-        <input type="text" name="username_first" placeholder="Enter your first name here" required><br>
+        <input type="text" name="username_first" placeholder="Enter your first name here" data-hint="名前を入力してください（必須）" data-hintPosition="middle-right" required><br>
         
         <label for="username_middle">Middle Name</label><br>
-        <input type="text" name="username_middle" placeholder="Enter your middle name here"><br>
+        <input type="text" name="username_middle" placeholder="Enter your middle name here" data-hint="ミドルネームを入力してください（任意）" data-hintPosition="middle-right"><br>
         
         <label for="username_last">Last Name (Required)</label><br>
-        <input type="text" name="username_last" placeholder="Enter your last name here" required><br>
+        <input type="text" name="username_last" placeholder="Enter your last name here" required data-hint="苗字を入力してください（必須）" data-hintPosition="middle-right"><br>
         
         <label for="mail">Email (Required)</label><br>
-        <input type="text" name="mail" placeholder="you@specialita.com" required><br>
+        <input type="text" name="mail" placeholder="you@specialita.com" data-hint="メールを入力してください（必須）" data-hintPosition="middle-right"　required><br>
         
         <label for="password">Password (Required)</label><br>
-        <input type="password" name="password" placeholder="Enter your password here" required><br>
+        <input type="password" name="password" placeholder="Enter your password here" data-hint="パスワードを入力してください（必須）<br>制限：５〜２０文字" data-hintPosition="middle-right" required><br>
         
         <label for="username_first">Password Confirmation (Required)</label><br>
-        <input type="password" name="password_confiration" placeholder="Confirm password your password" required><br>
+        <input type="password" name="password_confiration" placeholder="Confirm password your password" data-hint="確認のため、もう一度パスワードを入力してください（必須）" data-hintPosition="middle-right"　required><br>
         
-        <input type="submit" value="Sign Up">
+        <input type="submit" value="Sign Up" data-hint="登録する" data-hintPosition="middle-right">
     </form>
 
 </div>
+
+<!-- intro.js, introjs.cssを読み込み-->
+<script src="https://unpkg.com/intro.js@4.2.2/minified/intro.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/intro.js@4.2.2/minified/introjs.min.css">
+
+<!-- introJs()のHint -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    introJs().addHints().setOption("hintButtonLabel", "了解！");
+});
+</script>
