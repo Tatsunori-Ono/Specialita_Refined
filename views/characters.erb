@@ -1,0 +1,5 @@
+<% if current_user.records.present? %>
+    <% @records.each do |specialita| %>
+        <img src="<%= current_user.specialita.image %>">
+    <% end %>
+<% end %>

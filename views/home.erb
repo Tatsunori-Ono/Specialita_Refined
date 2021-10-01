@@ -21,27 +21,31 @@
         <link rel="stylesheet" href="/css/sp_movement.css">
         <!--Music Player CSS-->
         <link rel="stylesheet" href="/css/music_player.css">
+        <!--Particle Background CSS-->
+        <link rel="stylesheet" href="/css/particle_bg.css">
     </head>
     <body>
+        <!--Particle Background-->
+        <div id="particles-js"></div>
         <!--Realtime Date and Time-->
         <div style="text-align: center;">
           <p style="display:inline; font-family: cursive; font-size: 20px" id="RealDate"></p>
           <p style="display:inline; font-family: cursive; font-size: 20px" id="RealtimeClock"></p>
           <div class="level">
-            <% if current_user.records.blank? %>
+            <% if current_user.records.present? %>
             		|<% @records.each do |record| %>
             				<%= record.subject %> 
             				<strong>Lv. <%= (record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)).floor %></strong>|
             		<% end %>
             <% end %>
-          <div>
+          </div>
         </div>
         <!--Sidebar-->
         <div class="sidebar">
           <ul class="side">
             <li><a class="active" href="/home"><span class="fas fa-house-user"></span>Home</a></li>
             <li><a href="#news"><span class="far fa-newspaper"></span>News</a></li>
-            <li><a href="#contact"><span class="far fa-address-book"></span>Contact</a></li>
+            <li><a href="#characters"><span class="far fa-address-book"></span>Characters</a></li>
             <li><a href="/overall_records"><span class="far fa-list-alt"></span>Records</a></li>
           </ul>
         </div>
@@ -183,6 +187,7 @@
               </div>
             </div>
         </div>
+        
         <!--Stage for Specialita JS-->
         <script type="text/javascript" src="/js/sp_stage.js"></script>
         <!--Music Player JS-->
@@ -200,6 +205,10 @@
         
         <!-- read tutorial setting -->
         <script type="text/javascript" src="/js/tutorial_setting.js"></script>
+        
+        <!--particle.js-->
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="/js/particle_bg.js"></script>
         
         <!-- introJs().start();を実行する/チュートリアル開始 -->
         <script>
@@ -258,6 +267,5 @@
           //     }
           // });
         </script>
-        
     </body>
 </html>

@@ -211,3 +211,7 @@ post '/add_bg' do
     
     redirect '/setting'
 end
+
+get '/characters' do
+    erb :characters
+end
