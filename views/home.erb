@@ -19,6 +19,8 @@
         <link rel="stylesheet" href="/css/subject_add.css">
         <link rel="stylesheet" href="/css/settingbar.css">
         <link rel="stylesheet" href="/css/sp_movement.css">
+        <!--Level Banner CSS-->
+        <link rel="stylesheet" href="/css/level_banner.css">
         <!--Music Player CSS-->
         <link rel="stylesheet" href="/css/music_player.css">
         <!--Particle Background CSS-->
@@ -31,13 +33,15 @@
         <div style="text-align: center;">
           <p style="display:inline; font-family: cursive; font-size: 20px" id="RealDate"></p>
           <p style="display:inline; font-family: cursive; font-size: 20px" id="RealtimeClock"></p>
-          <div class="level">
-            <% if current_user.records.present? %>
-            		|<% @records.each do |record| %>
-            				<%= record.subject %> 
-            				<strong>Lv. <%= (record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)).floor %></strong>|
-            		<% end %>
-            <% end %>
+          <div class="level-banner">
+            <div class="level-banner-content">
+              <% if current_user.records.present? %>
+              		|<% @records.each do |record| %>
+              				<%= record.subject %> 
+              				<strong>Lv. <%= (record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)).floor %></strong>|
+              		<% end %>
+              <% end %>
+            </div>
           </div>
         </div>
         <!--Sidebar-->
