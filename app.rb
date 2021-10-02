@@ -213,6 +213,11 @@ post '/add_bg' do
 end
 
 get '/characters' do
+    if current_user.nil?
+        @records = Record.none
+    else
+        @records = current_user.records
+    end
     erb :characters
 end
 

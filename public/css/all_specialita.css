@@ -1,0 +1,43 @@
+.floating {
+  display: inline-block; /* 影をつけるためにinline-block要素にする */
+  position: relative;    /* 基準位置とする */
+  position: fixed;
+  bottom: 50px;
+  left: 20px;
+}
+.floating::before {
+  content: '';                   /* 疑似要素に必須 */
+  background: rgba(0, 0, 0, .3); /* 半透明の黒を指定 */
+  border-radius: 50%;            /* 円形にする */
+  display: inline-block;         /* インラインブロック要素にする */
+  position: absolute;            /* 相対位置にする */
+  bottom: -35%;                  /* 下に35%の位置に設置 */
+  left: 50%;                     /* 左から50%の位置に設置 */
+  transform: translateX(-50%);   /* 左右中央にするために要素の半分ぶんだけ左に戻す */
+  animation: move-y-shadow .5s infinite alternate ease-in-out;  /* アニメーション「move-y-shadow」 */
+}
+.floating img {
+  animation: move-y .5s infinite alternate ease-in-out;  /* アニメーション「move-y」 */
+}
+
+/* 上下を繰り返すアニメーション */
+@keyframes move-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+
+/* 影の大きさをかえるアニメーション */
+@keyframes move-y-shadow {
+  from {
+    width: 57%;
+    height: 25%;
+  }
+  to {
+    width: 50%;
+    height: 20%;
+  }
+}

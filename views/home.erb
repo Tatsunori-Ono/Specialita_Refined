@@ -27,6 +27,10 @@
         <link rel="stylesheet" href="/css/aura.css">
         <!--Particle Background CSS-->
         <link rel="stylesheet" href="/css/particle_bg.css">
+        <!--All Specialita CSS-->
+        <link rel="stylesheet" href="/css/all_specialita.css">
+        <!--Random Message CSS-->
+        <link rel="stylesheet" href="/css/random_message.css">
     </head>
     <body>
         <!--Particle Background-->
@@ -51,7 +55,7 @@
           <ul class="side">
             <li><a class="active" href="/home"><span class="fas fa-house-user"></span>Home</a></li>
             <li><a href="#news"><span class="far fa-newspaper"></span>News</a></li>
-            <li><a href="#characters"><span class="far fa-address-book"></span>Characters</a></li>
+            <li><a href="/characters"><span class="far fa-address-book"></span>Characters</a></li>
             <li><a href="/overall_records"><span class="far fa-list-alt"></span>Records</a></li>
             <li><a href="#analysis"><span class="far fa-chart-bar"></span>Analysis</a></li>
           </ul>
@@ -165,6 +169,15 @@
             </div>
           </div>
         </div>
+        <!--All Specialita-->
+        <!--<div class="floating">-->
+          <!--<input type="button" id="all-character" value="All Specialita = YOU" onclick="toggle()" style="width : 200px;">-->
+          <!--<div id="InsertAllCode"></div>-->
+        <!--</div>-->
+        <!--Random Message-->
+        <div class="floating">
+          <div id="RandomMessage" class="glowAnime"></div>
+        </div>
         <!--Music Player-->
         <div class="music_player_body">
             <div class="music-container" id="music-container">
@@ -213,20 +226,20 @@
         
         <!-- read tutorial setting -->
         <script type="text/javascript" src="/js/tutorial_setting.js"></script>
-        
         <!--particle.js-->
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
         <script src="/js/particle_bg.js"></script>
-        
         <!--Specialita Aura-->
         <script src="/js/aura.js"></script>
-        
+        <!--All Specialita-->
+        <script src="/js/all_specialita.js"></script>
+        <!--Random Message-->
+        <script src="/js/random_message.js"></script>
         <!--sp-movement loop-->
         <script>
           // ID値「puipui」に対してCSSアニメ―ション「purupuru」を800ミリ秒の間隔を空けてループ再生
           looopAnimation("puipuii", "purupuru", 800);
         </script>
-        
         <!-- introJs().start();を実行する/チュートリアル開始 -->
         <script>
           
@@ -246,7 +259,6 @@
             'showStepNumbers': false
             }).start()
           });
-            
             // Cookieを使って自動的に初回Userを判定、Tutorial開始
           //   onexit(function() {
           //     // $.cookieの中の第一引数で書き込むデータのKEY、第二引数でValue
