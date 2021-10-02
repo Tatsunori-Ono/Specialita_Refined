@@ -27,7 +27,12 @@
 							<strong><%= (record.total_time % (1000 * 60) / 100).floor %></strong> ms
 						</h3>
 						<div class="box">
-				          <p> Created at(作成日): <%=record.created_at%> <br> Updated at(更新日): <%=record.updated_at%> <br> <img src="<%= record.image %>"> </p>
+				          <p> 
+					          Created at(作成日): <%=record.created_at%> <br> 
+					          Updated at(更新日): <%=record.updated_at%> <br> 
+					          <strong>Lv. <%= ((record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)) * 2).floor %></strong>
+					          <img src="<%= record.image %>">
+				          </p>
 				        </div>
 					</section>
 				</li>

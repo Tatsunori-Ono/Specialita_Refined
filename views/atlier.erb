@@ -15,10 +15,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     </head>
     <body>
+        <h2 style="text-align: center; margin-top: 20px; font-family: Snell Roundhand, cursive; font-size: 50px;">Atelier</h2>
         <!--Drawing Board-->
-        <div id="board"></div>
-        <div id="button_center">
-            <button id="save_drawing">Save Drawing</button>
+        <div id="board" style="margin-top: 20px;">
+            <img style="position: fixed; z-index: 100; pointer-events: none; opacity: 0.5; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%)" src="/images/default/Specialita-Standard.png" width="200.25" height="374">
+        </div>
+        <div id="button_center" style="text-align: center;">
+            <button id="save_drawing" style="color: black; padding: 0; border: dashed 5px #77C2B9; margin-top: 20px;">Save Drawing! / Specialitaを保存！</button>
         </div>
         <script>
             $(document).ready(function(){
@@ -40,7 +43,7 @@
                 $("#save_drawing").click(function(){
                     domtoimage.toBlob(document.getElementById('board'))
                     .then(function (blob) {
-                        window.saveAs(blob, 'specialita_drawing.png');
+                        window.saveAs(blob, 'original_specialita_drawing.png');
                     });
                 })
             })

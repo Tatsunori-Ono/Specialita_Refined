@@ -23,6 +23,8 @@
         <link rel="stylesheet" href="/css/level_banner.css">
         <!--Music Player CSS-->
         <link rel="stylesheet" href="/css/music_player.css">
+        <!--Specialita Aura CSS-->
+        <link rel="stylesheet" href="/css/aura.css">
         <!--Particle Background CSS-->
         <link rel="stylesheet" href="/css/particle_bg.css">
     </head>
@@ -38,7 +40,7 @@
               <% if current_user.records.present? %>
               		|<% @records.each do |record| %>
               				<%= record.subject %> 
-              				<strong>Lv. <%= (record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)).floor %></strong> |
+              				<strong>Lv. <%= ((record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)) * 2).floor %></strong> |
               		<% end %>
               <% end %>
             </div>
@@ -51,6 +53,7 @@
             <li><a href="#news"><span class="far fa-newspaper"></span>News</a></li>
             <li><a href="#characters"><span class="far fa-address-book"></span>Characters</a></li>
             <li><a href="/overall_records"><span class="far fa-list-alt"></span>Records</a></li>
+            <li><a href="#analysis"><span class="far fa-chart-bar"></span>Analysis</a></li>
           </ul>
         </div>
         <!--Settingbar-->
@@ -78,8 +81,9 @@
             <% if current_user.user_sp_images.present? %>
               <div class='a'>
                 <!--<div class="update_sp_image"></div>-->
-                <img src="<%= current_user.user_sp_images.order(id: "DESC").first.record.image %>">
+                <img id="puipui" class="purupuru" src="<%= current_user.user_sp_images.order(id: "DESC").first.record.image %>">
                 <!--<img src="/images/default/Specialita_Def_1_mini.png">-->
+                <div id="aura"></div>
               </div>
             <% end %>
           </div>
@@ -213,6 +217,15 @@
         <!--particle.js-->
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
         <script src="/js/particle_bg.js"></script>
+        
+        <!--Specialita Aura-->
+        <script src="/js/aura.js"></script>
+        
+        <!--sp-movement loop-->
+        <script>
+          // ID値「puipui」に対してCSSアニメ―ション「purupuru」を800ミリ秒の間隔を空けてループ再生
+          looopAnimation("puipuii", "purupuru", 800);
+        </script>
         
         <!-- introJs().start();を実行する/チュートリアル開始 -->
         <script>

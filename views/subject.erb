@@ -1,13 +1,26 @@
+<style>
+    form {
+        text-align: center;
+        margin: auto;
+    }
+</style>
+
+<!--Particle Background-->
+<div id="particles-js"></div>
+
+<!--Particle Background CSS-->
+<link rel="stylesheet" href="/css/particle_bg.css">
+
 <!--enctype="multipart/form-data" needed to upload image-->
 <form action="/subject_add" method="post" enctype="multipart/form-data">
     
-    <label for="subject">Subject Name (Required)</label><br>
-    <input type="text" name="subject" placeholder="type in new subject" data-hint="ここに科目名・スペシャリタ名を入力してください" data-hintPosition="middle-right" required><br>
+    <label for="subject" style="font-family: Monaco; font-weight: bold;">Subject Name (Required)</label><br>
+    <input type="text" name="subject" placeholder="type in new subject" style="color: black; padding: 0; border: dashed 5px #CD659F; margin: 10px;" data-hint="ここに科目名・スペシャリタ名を入力してください" data-hintPosition="middle-right" required><br>
     
-    <label for="sp_image">Specialita Design for Subject (Required)</label><br>
-    <input type="file" name="sp_image" data-hint="ここにスペシャリタの画像をアップロードしてください" data-hintPosition="middle-right" required><br>
+    <label for="sp_image" style="font-family: Monaco; font-weight: bold; margin-top: 30px">Specialita Design for Subject (Required)</label><br>
+    <input type="file" name="sp_image" style="margin: 10px;" data-hint="ここにスペシャリタの画像をアップロードしてください" data-hintPosition="middle-right" required><br>
     
-    <input type="submit" value="add subject & its specialita">
+    <input type="submit" style="color: black; padding: 0; border: dashed 5px #77C2B9; margin-top: 20px;" value="add subject & its specialita">
 </form>
 
 <!-- intro.js, introjs.cssを読み込み-->
@@ -25,3 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <!--//     if (RegExp('multipage', 'gi').test(window.location.search)) {-->
 <!--//         introJs().start();-->
 <!--//     }-->
+
+<!--particle.js-->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="/js/particle_bg.js"></script>

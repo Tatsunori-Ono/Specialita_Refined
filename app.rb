@@ -215,3 +215,7 @@ end
 get '/characters' do
     erb :characters
 end
+
+get '/guide' do
+    erb :guide
+end
