@@ -12,30 +12,32 @@
 	<ul class="accordion-area">
 		<ul class="list-group">
 			<% @records.each do |record| %>
-				<li class="list-group-item">
-					<section>
-						<h3 class="title">
-							<%= record.subject %> |
-							<!--これ動かない。Internal Server Errorは出ないけど、-->
-							<!--０を入れてしまうと、時間追加をしてもずっと０になってしまう-->
-							<!--# < if record.total_time.nil? >-->
-							<!--# 	< record.total_time = 0 >-->
-							<!--# < end >-->
-							<strong><%= (record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)).floor %></strong> h: 
-							<strong><%= (record.total_time % (1000 * 60 * 60) / (1000 * 60)).floor %></strong> m: 
-							<strong><%= (record.total_time % (1000 * 60) / 1000).floor %></strong> s: 
-							<strong><%= (record.total_time % (1000 * 60) / 100).floor %></strong> ms
-						</h3>
-						<div class="box">
-				          <p> 
-					          Created at(作成日): <%=record.created_at%> <br> 
-					          Updated at(更新日): <%=record.updated_at%> <br> 
-					          <strong>Lv. <%= ((record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)) * 2).floor %></strong>
-					          <img src="<%= record.image %>">
-				          </p>
-				        </div>
-					</section>
-				</li>
+				<% if record.total_time.present? %>
+					<li class="list-group-item">
+						<section>
+							<h3 class="title">
+								<%= record.subject %> |
+								<!--これ動かない。Internal Server Errorは出ないけど、-->
+								<!--０を入れてしまうと、時間追加をしてもずっと０になってしまう-->
+								<!--# < if record.total_time.nil? >-->
+								<!--# 	< record.total_time = 0 >-->
+								<!--# < end >-->
+								<strong><%= (record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)).floor %></strong> h: 
+								<strong><%= (record.total_time % (1000 * 60 * 60) / (1000 * 60)).floor %></strong> m: 
+								<strong><%= (record.total_time % (1000 * 60) / 1000).floor %></strong> s: 
+								<strong><%= (record.total_time % (1000 * 60) / 100).floor %></strong> ms
+							</h3>
+							<div class="box">
+					          <p> 
+						          Created at(作成日): <%=record.created_at%> <br> 
+						          Updated at(更新日): <%=record.updated_at%> <br> 
+						          <strong>Lv. <%= ((record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)) * 2).floor %></strong>
+						          <img src="<%= record.image %>">
+					          </p>
+					        </div>
+						</section>
+					</li>				
+				<% end %>
 			<% end %>
 		</ul>
 	</ul>

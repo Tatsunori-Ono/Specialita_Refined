@@ -43,8 +43,10 @@
             <div class="level-banner-content">
               <% if current_user.records.present? %>
               		|<% @records.each do |record| %>
+              		  <% if record.total_time.present? %>
               				<%= record.subject %> 
               				<strong>Lv. <%= ((record.total_time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)) * 2).floor %></strong> |
+              		  <% end %>
               		<% end %>
               <% end %>
             </div>
