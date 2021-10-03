@@ -1,10 +1,39 @@
+<style>
+    form {
+        text-align: center;
+        margin: auto;
+    }
+</style>
+
+<!--Particle Background-->
+<div id="particles-js"></div>
+
+<!--Particle Background CSS-->
+<link rel="stylesheet" href="/css/particle_bg.css">
+
         <form action="/add_bg" method="post" enctype="multipart/form-data">
             
-            <label for="bg_name">Background Name (Required)</label><br>
-            <input type="text" name="bg_name" placeholder="type in name of the background" required><br>
+            <label for="bg_name" style="font-family: Monaco; font-weight: bold;">Background Name (Required)</label><br>
+            <input type="text" name="bg_name" style="color: black; padding: 0; border: dashed 5px #CD659F; margin: 10px;" placeholder="type in name of the background" data-hint="ここに背景名を入力してください" data-hintPosition="middle-right" required><br>
             
-            <label for="bg_image">Background Design (Required)</label><br>
-            <input type="file" name="bg_image" required><br>
+            <label for="bg_image" style="font-family: Monaco; font-weight: bold; margin-top: 30px">Background Design (Required)</label><br>
+            <input type="file" name="bg_image" style="margin: 10px;" data-hint="ここに背景の画像をアップロードしてください" data-hintPosition="middle-right"  required><br>
             
-            <input type="submit" value="add background">
+            <input type="submit" style="color: black; padding: 0; border: dashed 5px #77C2B9; margin-top: 20px;" value="add background">
+        
         </form>
+
+<!-- intro.js, introjs.cssを読み込み-->
+<script src="https://unpkg.com/intro.js@4.2.2/minified/intro.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/intro.js@4.2.2/minified/introjs.min.css">
+
+<!-- introJs()のHint -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    introJs().addHints().setOption("hintButtonLabel", "了解！");
+});
+</script>
+        
+<!--particle.js-->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="/js/particle_bg.js"></script>
