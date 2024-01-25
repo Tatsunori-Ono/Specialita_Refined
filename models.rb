@@ -1,8 +1,6 @@
 require 'bundler/setup'
 Bundler.require
 
-# ActiveRecord::Base.establish_connection
-
 ActiveRecord::Base.establish_connection("sqlite3:db/development.db")
 
 if development?
@@ -18,7 +16,6 @@ class User < ActiveRecord::Base
   validates :password,
     presence: true,
     length: {in: 5..20}
-    # on: :create
   has_many :records
   has_many :missions
   has_many :backgrounds

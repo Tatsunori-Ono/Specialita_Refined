@@ -29,9 +29,6 @@
         <!--Loader-->
         <div class="loader-wrapper">
           <img class="image" src="/images/default/Specialita-Standard-mini.png" alt="">
-          <!--<div style="width: 100%; height: 100%; <b1>1</b1>order:solid transparent;">-->
-          <!--  <div class="loading loading--full-height"></div>-->
-          <!--</div>-->
         </div>
         <script>
           $(window).on("load",function(){
@@ -85,7 +82,6 @@
                 </li>
               </ul>
               <!--If the user is logged in and if the user is not logged in-->
-              <!--list-style: none is for deleting the bullet points-->
               <% unless session[:user] %>
                 <li style="list-style: none; color: white; font-family: 'Gill Sans', sans-serif; font-size: 18px;">New User? /</li>
                 <li class="active" style="list-style: none; font-size: 18px;"><a href="/signin">Sign In /<span class="sr-only"></span></a></li>

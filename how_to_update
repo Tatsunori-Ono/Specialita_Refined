@@ -1,8 +1,0 @@
-$ heroku login --interactive
-
-$ git add .
-$ git commit -m "[message]"
-
-$ git push
-
-DONE

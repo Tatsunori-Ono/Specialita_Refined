@@ -14,14 +14,6 @@ enable :sessions
 
 before do
     # unless the user is logged in, /home is not accessible from url
-    #mistakes
-        # if !User && request.path_info != "/" && request.path_info != "/signin" && request.path_info != "/signup"
-        # if !User && request.path_info == ["/", "/signin", "/signup"]
-        # if !User && request.path_info != ["/", "/signin", "/signup"]
-        # if !User && !["/", "/signin", "/signup"].include?(request.path_info)
-        # if !User && request.path_info == "/home"
-    #below works as well!
-         #if !current_user && request.path_info != "/" && request.path_info != "/signin" && request.path_info != "/signup"
     if !current_user && !["/", "/signin", "/signup", "/credit"].include?(request.path_info)  
         # Using Sinatra Flash to show pop-up message for Users
         flash[:notice] = "Please sign up or sign in before accessing!　サインアップ、またはサインインをしてください！"
@@ -108,13 +100,6 @@ get '/subject/new' do
 end
 
 post '/subject_add' do
-    # current_user.records.create(subject: params[:subject], image: params[:filename])
-    
-    # @sp_image = params[:filename]
-    # File.open("/images/user_images/#{@sp_image}", 'wb') do |f|
-    #   f.write(file.read)
-    # end
-    
     file = params[:sp_image]
     ext_name = File.extname(file[:filename])
     if [".jpeg", ".jpg", ".png"].include?(ext_name.downcase)
@@ -166,27 +151,7 @@ end
 
 post '/save_bg' do
     @background_row = current_user.backgrounds.find_by(bg_name: params[:bg_name])
-    
-    # if @background_row
-    #     p 'あるよ'
-    # end
-    
-    # if @background_row.bg_image
-    #   p 'bg_imageあるよ' 
-    # end
-    
-    # @temp_bg = current_user.user_bg_images
-    # @temp_bg.bg_image = @background_row
-    
-    # current_user.user_bg_images.create(user: current_user, background: @background_row)
     current_user.user_bg_images.create(user: current_user, background: @background_row)
-    
-    # puts @temp_bg
-    
-    # @temp_bg.save
-    
-    # current_user.update(chosen_bg: @background_row.bg_image)
-    
     flash[:notice] = "Background Saved!"
 end
 
