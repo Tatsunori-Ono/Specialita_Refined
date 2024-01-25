@@ -12,6 +12,7 @@ gem 'bcrypt'
 # for pop-up notification
 gem 'sinatra-flash'
 gem 'psych', '~> 4.0.0'
+gem 'sqlite3'
 
 group :development do
   gem 'debase'
