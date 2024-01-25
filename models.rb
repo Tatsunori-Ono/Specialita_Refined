@@ -2,6 +2,9 @@ require 'bundler/setup'
 Bundler.require
 
 # ActiveRecord::Base.establish_connection
+
+ActiveRecord::Base.establish_connection("sqlite3:db/development.db")
+
 if development?
   ActiveRecord::Base.establish_connection("sqlite3:db/development.db")
 end
