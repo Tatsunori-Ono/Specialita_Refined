@@ -14,7 +14,7 @@ enable :sessions
 
 before do
     # unless the user is logged in, /home is not accessible from url
-    if !current_user && !["/", "/signin", "/signup", "/credit"].include?(request.path_info)  
+    if !current_user && !["/", "/signin", "/signup", "/credit", "/guide"].include?(request.path_info)  
         # Using Sinatra Flash to show pop-up message for Users
         flash[:notice] = "Please sign up or sign in before accessing!　サインアップ、またはサインインをしてください！"
         redirect '/'
