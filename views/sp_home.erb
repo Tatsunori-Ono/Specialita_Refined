@@ -31,10 +31,32 @@ iframe {
 section {
     z-index: 1;
 }
+
+.btn {
+  height: 200px;
+  width: 320px;  
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: #ED4034;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  z-index: 11;
+  position: absolute;
+  display:block;
+  text-align: center;
+  top: 50%;
+  left: 79.5%;
+}
 </style>
 
 <body>
-    <iframe width="958" height="539" src="https://www.youtube.com/embed/6032KgH-218" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div data-step='1' data-intro=
+            "<b>説明書</b>はここから！
+            <br><i> Please refer to the guide here! </i>
+            "></div>
+    <iframe class="begin-tutorial" width="958" height="539" src="https://www.youtube.com/embed/6032KgH-218" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <section class="section2">
         <h2 class="js_typing">SPECIALITA</h2><br>
         <h2 class="js_typing" style="background-color: white; color: black; text-decoration-line: underline; text-decoration-color: #ED4034;" >Specialita is a web application where your character grows respectively to your studying time. <br> The gamification of education allows you to maintain your motivation!</h2><br>
@@ -49,8 +71,33 @@ section {
         <h2 class="js_typing">SPECIALITA</h2><br>
         <h2 class="js_typing">SPECIALITA</h2>
     </section>
+    <div class="begin-tutorial"><div class="btn">説明書はnavbarのGuideより<br>ご利用ください。<br>また、Sign Upから適当な<br>アカウントを作成して頂きますと<br>実際にSpecialitaを<br>使用できます！</div></div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"　integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/shuffle-text@0.3.0/build/shuffle-text.min.js"></script>
 <script src="/js/js_typing.js"></script>
+
+<!-- intro.js, introjs.cssを読み込み-->
+<script src="https://unpkg.com/intro.js@4.2.2/minified/intro.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/intro.js@4.2.2/minified/introjs.min.css">
+<!-- read tutorial setting -->
+<script type="text/javascript" src="/js/tutorial_setting.js"></script>
+<!-- introJs().start();を実行する/チュートリアル開始 -->
+<script>
+          document.querySelector('.begin-tutorial').addEventListener('click', function(){
+            introJs().setOptions({
+            'nextLabel': "次へ/Next",
+            'prevLabel': "戻る/Back",
+            'doneLabel': 'Specialita!',
+            'showProgress': false,
+            'hidePrev': true,
+            'hideNext': false,
+            'disableInteraction': false,
+            'exitOnEsc': false,
+            'exitOnOverlayClick': false,
+            'keyboardNavigation': true,
+            'showStepNumbers': false
+            }).start()
+          });
+</script>
